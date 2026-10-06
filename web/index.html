@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Na página publicada qualquer um com o link abre, mas ela não precisa aparecer em buscadores. -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Trocada para "estatico" por src/exportar.ts: a interface lê dados.json em vez da API. -->
+  <meta name="busca-imoveis:modo" content="servidor">
+  <title>Busca Imóveis</title>
+  <!-- Caminhos relativos: a página publicada fica numa subpasta (usuario.github.io/repo/). -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15 16 5l12 10v12a1 1 0 0 1-1 1h-7v-8h-8v8H5a1 1 0 0 1-1-1z" fill="currentColor"/></svg>
+      <div>
+        <h1>Busca Imóveis</h1>
+        <p id="subtitulo" class="muted">carregando…</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span id="ultima" class="muted small"></span>
+      <button id="btn-outros" class="btn ghost" type="button">Outros sites</button>
+      <button id="btn-buscar" class="btn primary" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Buscar agora</span>
+      </button>
+    </div>
+  </header>
+
+  <section id="progresso" class="progresso hidden" aria-live="polite"></section>
+
+  <nav id="tabs" class="tabs" aria-label="Filtrar por status"></nav>
+
+  <section class="filtros" aria-label="Filtros">
+    <div class="filtro-linha">
+      <input id="f-texto" class="input grow" type="search" placeholder="Buscar bairro, rua, imobiliária, descrição…" autocomplete="off">
+      <label class="preco">
+        <span>Até <strong id="f-preco-valor">R$ 2.000</strong></span>
+        <input id="f-preco" type="range" min="500" max="2000" step="50">
+      </label>
+      <select id="f-base" class="input" title="O limite de preço vale para…">
+        <option value="aluguel">no aluguel</option>
+        <option value="total">no custo total</option>
+      </select>
+      <div id="f-quartos" class="seg" role="group" aria-label="Quartos">
+        <button type="button" data-v="0">Quartos</button>
+        <button type="button" data-v="1">1+</button>
+        <button type="button" data-v="2">2+</button>
+        <button type="button" data-v="3">3+</button>
+      </div>
+    </div>
+    <div class="filtro-linha">
+      <select id="f-tipo" class="input">
+        <option value="">Todos os tipos</option>
+        <option value="apartamento">Apartamento</option>
+        <option value="kitnet">Kitnet / studio</option>
+        <option value="casa">Casa / sobrado</option>
+        <option value="casa_condominio">Casa em condomínio</option>
+      </select>
+      <select id="f-fonte" class="input"><option value="">Todas as fontes</option></select>
+      <label class="chk"><input id="f-pet" type="checkbox"> Aceita pet</label>
+      <label class="chk"><input id="f-mob" type="checkbox"> Mobiliado</label>
+      <label class="chk"><input id="f-vaga" type="checkbox"> Com vaga</label>
+      <label class="chk"><input id="f-novos" type="checkbox"> Só da última busca</label>
+      <label class="chk"><input id="f-inativos" type="checkbox"> Mostrar indisponíveis</label>
+      <span class="spacer"></span>
+      <select id="f-ordem" class="input" title="Ordenar">
+        <option value="recentes">Mais recentes</option>
+        <option value="preco">Menor aluguel</option>
+        <option value="total">Menor custo total</option>
+        <option value="m2">Menor R$/m²</option>
+        <option value="area">Maior área</option>
+        <option value="ia">Nota da IA</option>
+      </select>
+      <div id="f-view" class="seg" role="group" aria-label="Visualização">
+        <button type="button" data-v="lista">Lista</button>
+        <button type="button" data-v="mapa">Mapa</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <p id="contagem" class="muted small"></p>
+    <div id="grid" class="grid"></div>
+    <div id="mais" class="mais hidden"><button class="btn ghost" type="button">Mostrar mais</button></div>
+    <div id="mapa" class="mapa hidden"></div>
+    <div id="vazio" class="vazio hidden"></div>
+  </main>
+
+  <dialog id="dlg-detalhe" class="drawer"></dialog>
+  <dialog id="dlg-outros" class="modal"></dialog>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

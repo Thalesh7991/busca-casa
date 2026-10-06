@@ -1,0 +1,15 @@
+node_modules/
+bun.lockb
+
+# Página estática gerada por bun run exportar (quem publica é o GitHub Actions)
+_site/
+
+# Estado local da busca (anúncios, status, notas). Contém telefones de corretores
+# e suas anotações pessoais - não versionar.
+data/
+!data/.gitkeep
+
+.env
+*.log
+.DS_Store
+Thumbs.db

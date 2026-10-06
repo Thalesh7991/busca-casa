@@ -1,0 +1,22 @@
+{
+  "name": "busca-imoveis",
+  "version": "1.0.0",
+  "description": "Agente de busca de imóveis para alugar: raspa imobiliárias e portais, deduplica e mostra tudo numa ferramenta web local. Zero dependências de runtime (só Bun).",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "app": "bun run src/server.ts --open",
+    "servidor": "bun run src/server.ts",
+    "scrape": "bun run src/scrape.ts",
+    "portal": "bun run src/cli.ts",
+    "estado": "bun run src/estado.ts",
+    "exportar": "bun run src/exportar.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
+  }
+}

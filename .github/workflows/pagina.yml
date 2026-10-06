@@ -1,0 +1,73 @@
+# Publica a interface no GitHub Pages: roda os testes, varre as imobiliárias e gera a
+# página estática (src/exportar.ts). O estado da busca (data/) passa de uma execução
+# para a próxima pelo cache do Actions - nunca vai para o git.
+name: Página
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 7h, 12h e 18h em Brasília (o cron do GitHub é em UTC)
+    - cron: "0 10,15,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Uma publicação por vez; a próxima espera a anterior terminar.
+concurrency:
+  group: pagina
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+
+      - name: Testes
+        run: |
+          bun test
+          bun run typecheck
+
+      - name: Restaura o estado da última busca
+        uses: actions/cache/restore@v6
+        with:
+          path: data
+          key: estado-${{ github.run_id }}
+          restore-keys: estado-
+
+      - name: Busca nas imobiliárias
+        # Se uma fonte (ou todas) falhar, publica mesmo assim com o que já havia;
+        # a página mostra "falhou: <fonte>" ao lado da data da última busca.
+        continue-on-error: true
+        run: bun run scrape
+
+      - name: Guarda o estado para a próxima execução
+        uses: actions/cache/save@v6
+        with:
+          path: data
+          key: estado-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Monta a página
+        run: bun run exportar _site
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

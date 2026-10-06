@@ -1,0 +1,147 @@
+{
+  "cidade": "Botucatu",
+  "uf": "SP",
+  "ddd": "14",
+  "aluguel_max": 2000,
+  "tipos": ["apartamento", "casa", "casa_condominio", "sobrado", "kitnet", "studio", "cobertura", "flat"],
+  "quartos_min": 0,
+  "buscar_detalhes": true,
+  "max_paginas": 20,
+  "concorrencia": 4,
+  "atualizar_a_cada_horas": 0,
+  "porta": 3000,
+  "mensagem_whatsapp": "Olá! Vi o anúncio \"{titulo}\"{ref} no {bairro} por R$ {aluguel}/mês ({url}). Ainda está disponível? Gostaria de saber as condições de locação e agendar uma visita. Obrigado!",
+  "fontes": [
+    {
+      "id": "robuste",
+      "nome": "Robuste Negócios Imobiliários",
+      "plataforma": "msys",
+      "url": "https://robuste.com.br",
+      "ativo": true
+    },
+    {
+      "id": "pontes",
+      "nome": "Pontes Imobiliária",
+      "plataforma": "msys",
+      "url": "https://pontesimobiliaria.com.br",
+      "ativo": true
+    },
+    {
+      "id": "molina",
+      "nome": "Molina Imobiliária",
+      "plataforma": "msys",
+      "url": "https://www.molinaimoveis.imb.br",
+      "ativo": true
+    },
+    {
+      "id": "dupla",
+      "nome": "Dupla Negócios Imobiliários",
+      "plataforma": "msys",
+      "url": "https://dupla.imb.br",
+      "ativo": true
+    },
+    {
+      "id": "sai",
+      "nome": "S.A Imóveis",
+      "plataforma": "ksi",
+      "url": "https://www.saimoveis.com.br",
+      "ativo": true,
+      "apelidos": ["S.A Empreendimentos Imobiliários", "SA Imóveis"]
+    },
+    {
+      "id": "concreto",
+      "nome": "Rede Concreto Imóveis",
+      "plataforma": "ksi",
+      "url": "https://www.concretoimoveis.com.br",
+      "ativo": true
+    },
+    {
+      "id": "chavesnamao",
+      "nome": "Chaves na Mão",
+      "plataforma": "chavesnamao",
+      "url": "https://www.chavesnamao.com.br",
+      "ativo": true
+    },
+    {
+      "id": "expande",
+      "nome": "Expande Corretora",
+      "plataforma": "kenlo",
+      "url": "https://www.expandecorretora.com.br",
+      "ativo": false,
+      "aviso": "robots.txt do site proíbe robôs (User-agent: * / Disallow: /). Ative só para uso pessoal e em baixo volume. Parte do estoque dela já aparece via Chaves na Mão."
+    },
+    {
+      "id": "essencial",
+      "nome": "Essencial Soluções Imobiliárias",
+      "plataforma": "kenlo",
+      "url": "https://www.essencialsolucoes.imb.br",
+      "ativo": false,
+      "aviso": "robots.txt do site proíbe robôs (User-agent: * / Disallow: /). Ative só para uso pessoal e em baixo volume. Parte do estoque dela já aparece via Chaves na Mão."
+    },
+    {
+      "id": "lar",
+      "nome": "Amelia Ramos Imóveis (Lar Corretora)",
+      "plataforma": "kenlo",
+      "url": "https://www.larcorretora.com.br",
+      "ativo": false,
+      "aviso": "robots.txt do site proíbe robôs (User-agent: * / Disallow: /). Ative só para uso pessoal e em baixo volume."
+    }
+  ],
+  "busca_manual": [
+    {
+      "nome": "ZAP Imóveis",
+      "url": "https://www.zapimoveis.com.br/aluguel/imoveis/sp+botucatu/?precoMaximo=2000",
+      "obs": "Bloqueia robôs - maior portal do país"
+    },
+    {
+      "nome": "Viva Real",
+      "url": "https://www.vivareal.com.br/aluguel/sp/botucatu/?precoMaximo=2000",
+      "obs": "Bloqueia robôs - mesmo grupo do ZAP"
+    },
+    {
+      "nome": "OLX",
+      "url": "https://www.olx.com.br/imoveis/aluguel/estado-sp?q=botucatu&pe=2000",
+      "obs": "Bloqueia robôs - muitos anúncios de proprietário direto"
+    },
+    {
+      "nome": "Imovelweb",
+      "url": "https://www.imovelweb.com.br/imoveis-aluguel-botucatu-sp.html",
+      "obs": "Bloqueia robôs - aplique o filtro de preço no site"
+    },
+    {
+      "nome": "Facebook Marketplace",
+      "url": "https://www.facebook.com/marketplace/search?query=aluguel%20botucatu&maxPrice=2000",
+      "obs": "Exige login - bom para proprietário direto e grupos locais"
+    },
+    {
+      "nome": "Expande Corretora",
+      "url": "https://www.expandecorretora.com.br/imoveis/para-alugar/botucatu?preco-de-locacao=0~2000",
+      "obs": "Site Kenlo (robots.txt restritivo)"
+    },
+    {
+      "nome": "Essencial Soluções Imobiliárias",
+      "url": "https://www.essencialsolucoes.imb.br/imoveis/para-alugar/botucatu?preco-de-locacao=0~2000",
+      "obs": "Site Kenlo (robots.txt restritivo)"
+    },
+    {
+      "nome": "Amelia Ramos Imóveis",
+      "url": "https://www.larcorretora.com.br/imoveis/para-alugar/botucatu?preco-de-locacao=0~2000",
+      "obs": "Site Kenlo (robots.txt restritivo)"
+    },
+    {
+      "nome": "Daiane Bonan",
+      "url": "https://www.daianebonan.com.br/alugar/apartamento-casa",
+      "obs": "Plataforma Jetimob (ainda sem adaptador)"
+    },
+    {
+      "nome": "Cecília Barros Imóveis",
+      "url": "https://www.ceciliabarrosimoveis.com.br/",
+      "obs": "Plataforma ImobiBrasil (ainda sem adaptador)"
+    },
+    {
+      "nome": "Realize Negócios Imobiliários",
+      "url": "https://www.realizeimobi.imb.br/imoveis/para-alugar",
+      "obs": "Ainda sem adaptador"
+    }
+  ]
+}

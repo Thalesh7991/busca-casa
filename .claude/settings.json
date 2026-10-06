@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun run scrape:*)",
+      "Bash(bun run estado:*)",
+      "Bash(bun run portal:*)",
+      "Bash(bun run src/scrape.ts:*)",
+      "Bash(bun run src/estado.ts:*)",
+      "Bash(bun run src/cli.ts:*)",
+      "Bash(bun test:*)",
+      "Bash(bun run typecheck)"
+    ]
+  }
+}
